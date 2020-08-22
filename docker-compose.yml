@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  web:
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+     - "8081:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+
+    container_name: react_app_web
+
+  web_tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+
+    volumes:
+      - /app/node_modules
+      - .:/app
+
+    command: [npm, 'run', 'test']
+
+    container_name: react_app_web_test
+
