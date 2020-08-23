@@ -9,5 +9,5 @@ before_install:
   - docker build -t haxelegide/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true USERNAME/docker-react npm run test
+  - docker run -e CI=true haxelegide/docker-react npm run test
 
